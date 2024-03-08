@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+const user_data = require('../fixtures/user.json')
+
 describe("Cadastro", () => {
 
     beforeEach(() => {
@@ -7,11 +9,11 @@ describe("Cadastro", () => {
     })
 
     it("Nome, e-mail e senhas válidos", () => {
-        const userName = "Leandro Henrique de Barros Reis";
+        //const userName = "Leandro Henrique de Barros Reis";
 
-        cy.get('#user').type(userName)
-            .get('#email').type("leohbr@gmail.com")
-            .get('#password').type("123456")
+        cy.get('#user').type(user_data.name)
+            .get('#email').type(user_data.email)
+            .get('#password').type(user_data.password)
             .get('#btnRegister').click()
 
         cy.get('#swal2-title')
@@ -21,14 +23,14 @@ describe("Cadastro", () => {
 
         cy.get('#swal2-html-container')
             .should('be.visible')
-            .and('include.text', `Bem-vindo ${userName}`)
+            .and('include.text', `Bem-vindo ${user_data.name}`)
 
     })
 
     it("Validar campo nome vazio", () => {
 
-        cy.get('#email').type("leohbr@gmail.com")
-            .get('#password').type("123456")
+        cy.get('#email').type(user_data.email)
+            .get('#password').type(user_data.password)
             .get('#btnRegister').click()
 
         cy.get('#errorMessageFirstName')
@@ -39,8 +41,8 @@ describe("Cadastro", () => {
 
     it("Validar campo e-mail vazio", () => {
 
-        cy.get('#user').type("Leandro Henrique de Barros Reis")
-            .get('#password').type("123456")
+        cy.get('#user').type(user_data.name)
+            .get('#password').type(user_data.password)
             .get('#btnRegister').click()
 
         cy.get('#errorMessageFirstName')
@@ -50,9 +52,9 @@ describe("Cadastro", () => {
     })
 
     it("Validar campo e-mail inválido", () => {
-        cy.get('#user').type("Leandro Henrique de Barros Reis")
-            .get('#email').type("leohbr@gmail")
-            .get('#password').type("123456")
+        cy.get('#user').type(user_data.name)
+            .get('#email').type(user_data.invalidEmail)
+            .get('#password').type(user_data.password)
             .get('#btnRegister').click()
 
         cy.get('#errorMessageFirstName')
@@ -61,9 +63,9 @@ describe("Cadastro", () => {
     })
 
     it("Validar campo senha inválido", () => {
-        cy.get('#user').type("Leandro Henrique de Barros Reis")
-            .get('#email').type("leohbr@gmail.com")
-            .get('#password').type("12345")
+        cy.get('#user').type(user_data.name)
+            .get('#email').type(user_data.email)
+            .get('#password').type(user_data.invalidPassword)
             .get('#btnRegister').click()
 
         cy.get('#errorMessageFirstName')
