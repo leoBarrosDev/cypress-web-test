@@ -13,9 +13,9 @@ describe("Cadastro", () => {
         cy.visit('/register')
     })
 
-    it("Nome, e-mail e senhas válidos", () => {
+    it("Nome, e-mail e senha válidos", () => {
         cy.fillName(user_data.name)
-        cy.fillEmail(user_data.email)
+        cy.preencheEmail(user_data.email)
         cy.fillPassword(user_data.password)
         cy.saveRegister()
         cy.successfully(registerSuccess)
@@ -23,7 +23,7 @@ describe("Cadastro", () => {
     })
 
     it("Validar campo nome vazio", () => {
-        cy.fillEmail(user_data.email)
+        cy.preencheEmail(user_data.email)
         cy.fillPassword(user_data.password)
         cy.saveRegister()
         cy.checkMessageError(errorName)
@@ -38,7 +38,7 @@ describe("Cadastro", () => {
 
     it("Validar campo e-mail inválido", () => {
         cy.fillName(user_data.name)
-        cy.fillEmail(user_data.invalidEmail)
+        cy.preencheEmail(user_data.invalidEmail)
         cy.fillPassword(user_data.password)
         cy.saveRegister()
         cy.checkMessageError(errorEmail)
@@ -46,7 +46,7 @@ describe("Cadastro", () => {
 
     it("Validar campo senha inválido", () => {
         cy.fillName(user_data.name)
-        cy.fillEmail(user_data.email)
+        cy.preencheEmail(user_data.email)
         cy.fillPassword(user_data.invalidPassword)
         cy.saveRegister()
         cy.checkMessageError(errorPassword)

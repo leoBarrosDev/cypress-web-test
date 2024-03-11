@@ -1,27 +1,46 @@
 /// <reference types="cypress" />
 import { faker } from '@faker-js/faker';
 
+/**
+        * get() Pega elementos na página
+        * contains() Verifica se o elemento contém o valor informado
+        * find() Localiza elementos na página
+        * as() - alias para o elemento"
+        */
+
+const emailError = "E-mail inválido."
+const passwordError = "Senha inválida."
+const successLogin = "Login realizado"
+const pattern = /^[a-zA-Z0-9&@#]{1,5}$/;
+
 describe("Login", () => {
 
-    it("E-mail e senha válidos", () => {
+    beforeEach(() => {
         cy.visit('/login')
-            .get('#user').type(faker.person.fullName())
-            .get('#password').type(faker.internet.password())
-            .get('#btnLogin').click()
+    })
 
-        /**
-         * get() Pega elementos na página
-         * contains() Verifica se o elemento contém o valor informado
-         * find() Localiza elementos na página
-         * as() - alias para o elemento"
-         */
+    it("E-mail e senha válidos", () => {
+        cy.fillEmail(faker.internet.email())
+            .fillPassword(faker.internet.password())
+            .toEnter()
+
+        cy.loginSuccess(successLogin)
     })
 
     it("E-mail inválido e senha válida", () => {
+        cy.fillEmail(faker.internet.email().replace("@", ""))
+            .fillPassword(faker.internet.password())
+            .toEnter()
 
+        cy.checkErrorEmail(emailError)
     })
 
-    it("Senha inválida e e-mail válido", () => {
+    it("E-mail válido e senha inválida", () => {
+        cy.fillEmail(faker.internet.email())
+            //.fillPassword(faker.helpers.rangeToNumber({ min: 1, max: 5 }))
+            .fillPassword(faker.string.alphanumeric(5))
+            .toEnter()
 
+        cy.checkErrorPassword(passwordError)
     })
 })
