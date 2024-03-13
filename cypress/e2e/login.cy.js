@@ -11,7 +11,7 @@ import { faker } from '@faker-js/faker';
 const emailError = "E-mail inválido."
 const passwordError = "Senha inválida."
 const successLogin = "Login realizado"
-const pattern = /^[a-zA-Z0-9&@#]{1,5}$/;
+//const pattern = /^[a-zA-Z0-9&@#]{1,5}$/;
 
 describe("Login", () => {
 
@@ -21,7 +21,7 @@ describe("Login", () => {
 
     it("E-mail e senha válidos", () => {
         cy.fillEmail(faker.internet.email())
-            .fillPassword(faker.internet.password())
+            .fillPassword(faker.string.alphanumeric(6))
             .toEnter()
 
         cy.loginSuccess(successLogin)
@@ -37,7 +37,6 @@ describe("Login", () => {
 
     it("E-mail válido e senha inválida", () => {
         cy.fillEmail(faker.internet.email())
-            //.fillPassword(faker.helpers.rangeToNumber({ min: 1, max: 5 }))
             .fillPassword(faker.string.alphanumeric(5))
             .toEnter()
 

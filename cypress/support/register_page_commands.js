@@ -1,30 +1,47 @@
 /// <reference types="cypress" />
 
+const elements = {
+    buttons: {
+        register: '#btnRegister',
+    },
+    inputs: {
+        name: '#user',
+        email: '#email',
+        password: '#password',
+    },
+    messages: {
+        registerSuccess: 'Cadastro realizado!',
+        errorName: 'O campo nome deve ser prenchido',
+        errorEmail: 'O campo e-mail deve ser prenchido corretamente',
+        errorPassword: 'O campo senha deve ter pelo menos 6 dígitos'
+    }
+}
+
 Cypress.Commands.add('fillName', (name) => {
-    cy.get('#user')
+    cy.get(elements.inputs.name)
         .type(name)
 })
 
 Cypress.Commands.add('preencheEmail', (email) => {
-    cy.get('#email')
+    cy.get(elements.inputs.email)
         .type(email)
 })
 
 Cypress.Commands.add('fillPassword', (password) => {
-    cy.get('#password')
+    cy.get(elements.inputs.password)
         .type(password)
 })
 
 Cypress.Commands.add('saveRegister', () => {
-    cy.get('#btnRegister')
-        .click()
-})
-
-Cypress.Commands.add('successfully', (message) => {
+    cy.get(elements.buttons.register).click()
+    cy.get('.swal2-popup')
+        .should('be.visible')
     cy.get('#swal2-title')
         .should('be.visible')
-        .should('have.text', message)
+        .should('have.text', elements.messages.registerSuccess)
+
 })
+
 
 Cypress.Commands.add('wellcomeMessage', (name) => {
     cy.get('#swal2-html-container')
@@ -32,11 +49,44 @@ Cypress.Commands.add('wellcomeMessage', (name) => {
         .and('include.text', `Bem-vindo ${name}`)
 })
 
-Cypress.Commands.add('checkMessageError', (message) => {
+Cypress.Commands.add('saveErrorName', () => {
+    cy.get(elements.buttons.register).click()
     cy.get('#errorMessageFirstName')
         .should('be.visible')
-        .should('have.text', message)
+        .should('have.text', elements.messages.errorName)
+
 })
+
+Cypress.Commands.add('saveErrorEmail', () => {
+    cy.get(elements.buttons.register).click()
+    cy.get('#errorMessageFirstName')
+        .should('be.visible')
+        .should('have.text', elements.messages.errorEmail)
+
+})
+
+Cypress.Commands.add('invalidName', () => {
+    cy.get(elements.buttons.register).click()
+    cy.get('#errorMessageFirstName')
+        .should('be.visible')
+        .should('have.text', elements.messages.errorName)
+
+})
+
+Cypress.Commands.add('invalidPassword', () => {
+    cy.get(elements.buttons.register).click()
+    cy.get('#errorMessageFirstName')
+        .should('be.visible')
+        .should('have.text', elements.messages.errorPassword)
+
+})
+
+
+// Cypress.Commands.add('checkMessageError', () => {
+//     cy.get('#errorMessageFirstName')
+//         .should('be.visible')
+//         .should('have.text', elements.messages.errorName)
+// })
 
 
 // -- This is a parent command --
