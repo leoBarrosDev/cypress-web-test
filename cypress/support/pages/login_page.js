@@ -8,13 +8,16 @@ const elements = {
         name: '#user',
         email: '#email',
         password: '#password',
+    },
+    messages: {
+        emailError: "E-mail inválido.",
+        passwordError: "Senha inválida.",
+        successLogin: "Login realizado",
     }
 }
 
+
 export default {
-
-
-
     fillEmail(email) {
         cy.get(elements.inputs.name)
             .type(email)
@@ -30,21 +33,21 @@ export default {
             .click()
     },
 
-    loginSuccess(message) {
+    loginSuccess() {
         cy.get('.swal2-title')
             .should('be.visible')
-            .and('have.text', message)
+            .and('have.text', elements.messages.successLogin)
     },
 
-    checkErrorEmail(message) {
+    checkErrorEmail() {
         cy.get('.invalid_input')
             .should('be.visible')
-            .should('have.text', message)
+            .should('have.text', elements.messages.emailError)
     },
 
-    checkErrorPassword(message) {
+    checkErrorPassword() {
         cy.get('.invalid_input')
             .should('be.visible')
-            .should('have.text', message)
+            .should('have.text', elements.messages.passwordError)
     }
 }

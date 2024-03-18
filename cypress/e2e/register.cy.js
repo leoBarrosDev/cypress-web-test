@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import { faker } from '@faker-js/faker';
+import register_page from '../support/pages/register_page'
 
 let name = faker.person.fullName()
 let email = faker.internet.email()
@@ -14,43 +15,41 @@ describe("Cadastro", () => {
     })
 
     it("Nome, e-mail e senha válidos", () => {
-        cy.fillName(name)
-        cy.preencheEmail(email)
-        cy.fillPassword(password)
-        cy.saveRegister()
-
-        // cy.wellcomeMessage(name)
+        register_page.fillName(name)
+        register_page.preencheEmail(email)
+        register_page.fillPassword(password)
+        register_page.saveRegister()
     })
 
     it("Validar campo nome vazio", () => {
-        cy.preencheEmail(email)
-            .fillPassword(password)
-            .saveErrorName()
+        register_page.preencheEmail(email)
+        register_page.fillPassword(password)
+        register_page.saveErrorName()
     })
 
     it("Validar campo e-mail vazio", () => {
-        cy.fillName(name)
-            .fillPassword(password)
-            .saveErrorEmail()
+        register_page.fillName(name)
+        register_page.fillPassword(password)
+        register_page.saveErrorEmail()
     })
 
     it("Validar campo e-mail inválido", () => {
-        cy.fillName(name)
-            .preencheEmail(invalidEmail)
-            .fillPassword(password)
-            .saveErrorEmail()
+        register_page.fillName(name)
+        register_page.preencheEmail(invalidEmail)
+        register_page.fillPassword(password)
+        register_page.saveErrorEmail()
     })
 
     it("Validar campo password vazio", () => {
-        cy.fillName(name)
-            .preencheEmail(email)
-            .invalidPassword()
+        register_page.fillName(name)
+        register_page.preencheEmail(email)
+        register_page.invalidPassword()
     })
 
     it("Validar campo senha inválido", () => {
-        cy.fillName(name)
-            .preencheEmail(email)
-            .fillPassword(invalidPassword)
-            .invalidPassword()
+        register_page.fillName(name)
+        register_page.preencheEmail(email)
+        register_page.fillPassword(invalidPassword)
+        register_page.invalidPassword()
     })
 })

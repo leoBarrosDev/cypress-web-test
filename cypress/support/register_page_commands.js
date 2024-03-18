@@ -81,14 +81,6 @@ Cypress.Commands.add('invalidPassword', () => {
 
 })
 
-
-// Cypress.Commands.add('checkMessageError', () => {
-//     cy.get('#errorMessageFirstName')
-//         .should('be.visible')
-//         .should('have.text', elements.messages.errorName)
-// })
-
-
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
