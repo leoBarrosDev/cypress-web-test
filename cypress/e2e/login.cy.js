@@ -1,12 +1,6 @@
 /// <reference types="cypress" />
 import { faker } from '@faker-js/faker';
-
-/**
-        * get() Pega elementos na página
-        * contains() Verifica se o elemento contém o valor informado
-        * find() Localiza elementos na página
-        * as() - alias para o elemento"
-        */
+import login_page from '../support/pages/login_page'
 
 const emailError = "E-mail inválido."
 const passwordError = "Senha inválida."
@@ -20,26 +14,23 @@ describe("Login", () => {
     })
 
     it("E-mail e senha válidos", () => {
-        cy.fillEmail(faker.internet.email())
-            .fillPassword(faker.string.alphanumeric(6))
-            .toEnter()
-
-        cy.loginSuccess(successLogin)
+        login_page.fillEmail(faker.internet.email())
+        login_page.fillPassword(faker.string.alphanumeric(6))
+        login_page.toEnter()
+        login_page.loginSuccess(successLogin)
     })
 
     it("E-mail inválido e senha válida", () => {
-        cy.fillEmail(faker.internet.email().replace("@", ""))
-            .fillPassword(faker.internet.password())
-            .toEnter()
-
-        cy.checkErrorEmail(emailError)
+        login_page.fillEmail(faker.internet.email().replace("@", ""))
+        login_page.fillPassword(faker.internet.password())
+        login_page.toEnter()
+        login_page.checkErrorEmail(emailError)
     })
 
     it("E-mail válido e senha inválida", () => {
-        cy.fillEmail(faker.internet.email())
-            .fillPassword(faker.string.alphanumeric(5))
-            .toEnter()
-
-        cy.checkErrorPassword(passwordError)
+        login_page.fillEmail(faker.internet.email())
+        login_page.fillPassword(faker.string.alphanumeric(5))
+        login_page.toEnter()
+        login_page.checkErrorPassword(passwordError)
     })
 })
