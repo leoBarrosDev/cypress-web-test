@@ -34,7 +34,7 @@ export default {
     },
 
     loginSuccess() {
-        cy.get('.swal2-title')
+        cy.get('#swal2-title')
             .should('be.visible')
             .and('have.text', elements.messages.successLogin)
     },
