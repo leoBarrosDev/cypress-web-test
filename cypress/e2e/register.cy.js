@@ -8,48 +8,53 @@ let password = faker.string.alphanumeric(6)
 let invalidPassword = faker.string.alphanumeric(5)
 let invalidEmail = 'invalid@email'
 
-describe("Cadastro", () => {
+const screens = ['iphone-7', 'iphone-5', 'iphone-7', 'samsung-s10']
 
-    beforeEach(() => {
-        cy.visit('/register')
-    })
+screens.forEach(screen => {
+    describe("Cadastro", () => {
 
-    it("Nome, e-mail e senha válidos", () => {
-        register_page.fillName(name)
-        register_page.preencheEmail(email)
-        register_page.fillPassword(password)
-        register_page.saveRegister()
-    })
+        beforeEach(() => {
+            cy.visit('/register')
+        })
 
-    it("Validar campo nome vazio", () => {
-        register_page.preencheEmail(email)
-        register_page.fillPassword(password)
-        register_page.saveErrorName()
-    })
+        it("Nome, e-mail e senha válidos", () => {
+            register_page.fillName(name)
+            register_page.preencheEmail(email)
+            register_page.fillPassword(password)
+            register_page.saveRegister()
+        })
 
-    it("Validar campo e-mail vazio", () => {
-        register_page.fillName(name)
-        register_page.fillPassword(password)
-        register_page.saveErrorEmail()
-    })
+        it("Validar campo nome vazio", () => {
+            register_page.preencheEmail(email)
+            register_page.fillPassword(password)
+            register_page.saveErrorName()
+        })
 
-    it("Validar campo e-mail inválido", () => {
-        register_page.fillName(name)
-        register_page.preencheEmail(invalidEmail)
-        register_page.fillPassword(password)
-        register_page.saveErrorEmail()
-    })
+        it("Validar campo e-mail vazio", () => {
+            register_page.fillName(name)
+            register_page.fillPassword(password)
+            register_page.saveErrorEmail()
+        })
 
-    it("Validar campo password vazio", () => {
-        register_page.fillName(name)
-        register_page.preencheEmail(email)
-        register_page.invalidPassword()
-    })
+        it("Validar campo e-mail inválido", () => {
+            register_page.fillName(name)
+            register_page.preencheEmail(invalidEmail)
+            register_page.fillPassword(password)
+            register_page.saveErrorEmail()
+        })
 
-    it("Validar campo senha inválido", () => {
-        register_page.fillName(name)
-        register_page.preencheEmail(email)
-        register_page.fillPassword(invalidPassword)
-        register_page.invalidPassword()
+        it("Validar campo password vazio", () => {
+            register_page.fillName(name)
+            register_page.preencheEmail(email)
+            register_page.invalidPassword()
+        })
+
+        it("Validar campo senha inválido", () => {
+            register_page.fillName(name)
+            register_page.preencheEmail(email)
+            register_page.fillPassword(invalidPassword)
+            register_page.invalidPassword()
+        })
     })
 })
+
