@@ -14,6 +14,8 @@ screens.forEach(screen => {
     describe("Cadastro", () => {
 
         beforeEach(() => {
+            cy.clearCookies()
+            cy.viewport(screen)
             cy.visit('/register')
         })
 
