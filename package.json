@@ -10,8 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.2",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-    "@badeball/cypress-configuration": "^6.1.0",
     "cypress": "^13.6.6"
   },
   "devDependencies": {
