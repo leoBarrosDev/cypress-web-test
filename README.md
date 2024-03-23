@@ -25,15 +25,10 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/cypress">
-    <img src="https://img.shields.io/npm/dm/cypress.svg" alt="npm"/>
-  </a>
-  <a href="https://on.cypress.io/discord">
+   <a href="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
     <img src="https://img.shields.io/badge/chat-on%20Discord-brightgreen" alt="Discord chat"/>
   </a>
-    <a href="https://stackshare.io/cypress">
-    <img src="https://img.stackshare.io/misc/follow-on-stackshare-badge.svg" alt="StackShare"/>
-  </a><br />
+   ><br/>
 </p>
 
 ## What is Cypress?
@@ -63,11 +58,6 @@ pnpm add cypress --save-dev
 ```
 
 ![installing-cli e1693232](./assets/cypress-installation.gif)
-
-## Contributing
-
-[![cypress](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/ypt4pf/develop&style=flat&logo=cypress)](https://cloud.cypress.io/projects/ypt4pf/runs)
-[![CircleCI](https://circleci.com/gh/cypress-io/cypress/tree/develop.svg?style=svg)](https://circleci.com/gh/cypress-io/cypress/tree/develop) -  `develop` branch
 
 Please see our [Contributing Guideline](./CONTRIBUTING.md) which explains repo organization, linting, testing, and other steps.
 
