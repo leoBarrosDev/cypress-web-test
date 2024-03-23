@@ -1,29 +1,23 @@
-Feature: Login
-
 Feature: Valid login
-    Eu como um cliente
-    Quero fazer login na aplicação
-    Para consultar produtos
 
-    Scenario: Logging in with valids email and password
+    Me as a customer
+    I want to access the application
+    to make a purchase
+
+    Scenario: Error login with invalid email
         Given I'm on login page
-        When I fill a valid email
-        and I fill a valid password
-        and I click in login button
-        Then I can see a message "Exemplo de mensagem"
+        And I fill the password
+        When I click on login button
+        Then I should see an error "E-mail inválido."
 
-
-    Scenario: Logging with invalid email and valid password
+    Scenario: Error login with Invalid password
         Given I'm on login page
-        When I fill a invalid email
-        and I fill a valid password
-        and I click in login button
-        Then I can see a message "Exemplo de mensagem"
+        And I fill the e-mail
+        When I click on login button
+        Then I should see an error "Senha inválida."
 
-    Scenario: Logging with valid email and invalid password
+    Scenario: Successful login with valid credentials
         Given I'm on login page
-        When I fill a valid email
-        and I fill a invalid password
-        and I click in login button
-        Then I can see a message "Exemplo de mensagem"
-
+        And And I fill my credentials
+        When I click on login button
+        Then I see an message "Login realizado"
