@@ -21,7 +21,7 @@ When("I click on login button", () => {
     loginPage.toEnter()
 })
 
-Then("I should see an error {string}", (message) => {
+Then("I should see an error {string} on login", (message) => {
     loginPage.checkErrorMessageLogin(message)
 })
 

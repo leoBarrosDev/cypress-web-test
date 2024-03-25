@@ -5,11 +5,35 @@ export default {
         cy.get('#btnRegister').click()
     },
     wellcomeMessage(message) {
-        cy.get("sucesso")
+        cy.get('#swal2-title')
             .should('be.visible')
             .should('have.text', message)
     },
-    // fillCredentials(name, email, password) {
-    //     cy.fi
-    // }
+
+    setEmail(email) {
+        cy.get('#email')
+            .clear()
+            .type(email)
+            .should('be.visible')
+    },
+
+    fillName(name) {
+        cy.get('#user')
+            .clear()
+            .type(name)
+            .should('be.visible')
+    },
+
+    fillPassword(password) {
+        cy.get('#password')
+            .clear()
+            .type(password)
+            .should('be.visible')
+    },
+
+    checkErrorMessageRegister(message) {
+        cy.get('#errorMessageFirstName')
+            .should('be.visible')
+            .and('have.text', message)
+    }
 }

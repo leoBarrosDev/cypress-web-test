@@ -13,11 +13,11 @@ Given("I'm on register page", () => {
     homePage.accessRegister()
 })
 
-Given("I fill the register e-mail", () => {
+Given("I fill the e-mail register", () => {
     registerPage.setEmail(email)
 })
 
-Given("I fill the register password", () => {
+Given("I fill the password register", () => {
     registerPage.fillPassword(password)
 })
 
@@ -25,6 +25,20 @@ When("I click on register button", () => {
     registerPage.saveRegister()
 })
 
-Then("I should see an error {string}", (message) => {
-    registerPage.checkErrorMessage(message)
+Then("I should see an error {string} on register", (message) => {
+    registerPage.checkErrorMessageRegister(message)
+})
+
+Given("I fill my credentials register", () => {
+    registerPage.fillName(name)
+    registerPage.fillPassword(password)
+    registerPage.setEmail(email)
+})
+
+Given("I fill the name register", () => {
+    registerPage.fillName(name)
+})
+
+Then("I see an message {string} on register", (message) => {
+    registerPage.wellcomeMessage(message)
 })
