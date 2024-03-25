@@ -9,5 +9,13 @@ export default {
 
         cy.get('.fa-user')
             .click()
+    },
+
+    accessRegister() {
+        cy.visit('/')
+        cy.get('#top_header')
+            .should('be.visible')
+            .get('.fa-lock')
+            .click()
     }
 }
