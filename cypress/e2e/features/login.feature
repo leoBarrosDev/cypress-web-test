@@ -3,16 +3,16 @@ Feature: Valid login
     Me as a customer
     I want to access the application
     to make a purchase
-
+@focus 
     Scenario: Error login with invalid email
         Given I'm on login page
-        And I fill the password
+        And I fill the login password
         When I click on login button
         Then I should see an error "E-mail inválido."
 
     Scenario: Error login with Invalid password
         Given I'm on login page
-        And I fill the e-mail
+        And I fill the login e-mail
         When I click on login button
         Then I should see an error "Senha inválida."
 
