@@ -46,7 +46,7 @@
 Install Cypress for Mac, Linux, or Windows, then [get started](https://on.cypress.io/install).
 
 ```bash
-npm install cypress --save-dev
+npm install cypress
 ```
 or
 ```bash
