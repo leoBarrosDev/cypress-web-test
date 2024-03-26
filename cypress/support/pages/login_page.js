@@ -17,10 +17,14 @@ export default {
             .should('be.visible')
             .click()
     },
-    successLogin(message) {
+    successLogin(message, email) {
         cy.get('#swal2-title')
             .should('be.visible')
             .and('have.text', message)
+
+        cy.get('#swal2-html-container')
+            .should('be.visible')
+            .and('have.text', "Olá, " + email)
     },
 
     fillCredentialsLogin(email, password) {

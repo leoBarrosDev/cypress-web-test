@@ -34,5 +34,5 @@ Given("And I fill my credentials", () => {
 })
 
 Then("I see an message {string}", (message) => {
-    loginPage.successLogin(message)
+    loginPage.successLogin(message, email)
 })
