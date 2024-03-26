@@ -4,10 +4,13 @@ export default {
     saveRegister() {
         cy.get('#btnRegister').click()
     },
-    wellcomeMessage(message) {
+    wellcomeMessage(message, name) {
         cy.get('#swal2-title')
             .should('be.visible')
             .should('have.text', message)
+        cy.get('#swal2-html-container')
+            .should('be.visible')
+            .should('have.text', "Bem-vindo " + name)
     },
 
     setEmail(email) {

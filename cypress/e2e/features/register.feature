@@ -28,8 +28,5 @@ Feature: Valid Register
     Scenario: Successful register with valid credentials
         Given I'm on register page
         And I fill my credentials register
-        # And I fill the name register
-        # And I fill the e-mail register
-        # And I fill the password register
         When I click on register button
         Then I see an message "Cadastro realizado!" on register

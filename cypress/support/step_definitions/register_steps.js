@@ -40,5 +40,5 @@ Given("I fill the name register", () => {
 })
 
 Then("I see an message {string} on register", (message) => {
-    registerPage.wellcomeMessage(message)
+    registerPage.wellcomeMessage(message, name)
 })
