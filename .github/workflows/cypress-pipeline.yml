@@ -19,7 +19,7 @@ jobs:
         env: 
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
-      -name: Upload reports
+      - name: Upload reports
         uses: actions/upload-artifact@v3
         with:
           name: cypress-artifacts
