@@ -1,0 +1,21 @@
+on:
+  pull-request:
+    branches:
+      - main
+
+jobs:
+  cypress-run:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout/Web automation Cypress
+      - uses: actions/checkout@v3
+
+      - name: Add dependencies
+        run: echo Leandro Reis
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          record: true
+        env: 
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
