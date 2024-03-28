@@ -7,14 +7,14 @@ jobs:
   cypress-run:
     runs-on: windows-latest
     steps:
-      - name: Checkout/Web automation Cypress
-      - uses: actions/checkout@v3
+      - name: Checkout
+        use: actions/checkout@v3   
 
       - name: Add dependencies
         run: npm install
 
       - name: Cypress run
-        uses: cypress-io/github-action@v5
+        use: cypress-io/github-action@v6
         with:
           record: true
         env: 
